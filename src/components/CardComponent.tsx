@@ -4,6 +4,8 @@ interface CardProps {
   cardData: {
     adult: boolean;
     backdrop_path: string;
+    name?: string | undefined;
+    first_air_date?: string | undefined;
     id: number;
     title: string;
     original_language: string;
@@ -37,10 +39,12 @@ function CardComponent({ cardData }: CardProps) {
         </div>
 
         <p className="font-bold md:truncate hover:text-secondary-color cursor-pointer">
-          {cardData.title}
+          {cardData.title ? cardData.title : cardData.name}
         </p>
         <p className="text-gray-400 font-thin text-sm">
-          {cardData.release_date}
+          {cardData.release_date
+            ? cardData.release_date
+            : cardData.first_air_date}
         </p>
       </div>
     </div>

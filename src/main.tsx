@@ -3,8 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ListContainerComponennt from "./components/ListContainerComponennt.tsx";
 import HomeView, { loader as LoaderHome } from "./views/HomeView.tsx";
+import MovieView from "./views/MovieView.tsx";
+import TVShowView from "./views/TVShowView.tsx";
 
 const router = createBrowserRouter([
   {
@@ -12,8 +13,8 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "/", element: <HomeView />, loader: LoaderHome },
-      { path: "/movie", element: <ListContainerComponennt /> },
-      { path: "/tv-show", element: <ListContainerComponennt /> },
+      { path: "/movie", element: <MovieView/> },
+      { path: "/tv-show", element: <TVShowView/>},
     ],
   },
 ]);

@@ -143,19 +143,26 @@ function HomeView() {
 
   return (
     <>
-
-          
-    <div className="absolute top-0 left-0 right-0 bottom-0 bg-white opacity-50 blur"></div>
-          <div className="absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center text-xl font-bold text-tertiary-color">LOADING...</div>
-          <h1 className="font-bold">All Trend Today</h1>
-          <div className="mt-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-8">
-            {dataMovie &&
-              dataMovie.results.map((item) => {
-                return (
-                  <CardComponent key={item.id.toString()} cardData={item} />
-                );
-              })}
+      {isLoading ? (
+        <>
+          <div className="fixed top-0 left-0 right-0 bottom-0 bg-white opacity-70 blur"></div>
+          <div className="fixed top-0 left-0 right-0 bottom-0 flex justify-center items-center text-xl z-10 font-bold text-primary-color">
+            LOADING...
           </div>
+        </>
+      ) : (
+        <></>
+      )}
+
+      <h1 className="font-bold">
+        {resultQuery ? `Search Results By "${resultQuery}"` : "All Trend Today"}
+      </h1>
+      <div className="mt-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3 md:gap-8">
+        {dataMovie &&
+          dataMovie.results.map((item) => {
+            return <CardComponent key={item.id.toString()} cardData={item} />;
+          })}
+      </div>
     </>
   );
 }
