@@ -26,11 +26,11 @@ function CardComponent({ cardData }: CardProps) {
   return (
     <div className="h-40 flex rounded shadow border md:h-96 md:flex-col">
       <div className="w-32 h-full flex-none md:w-full md:h-0 md:grow">
-        <LazyLoadImage
+        {cardData.poster_path? <LazyLoadImage
           src={`https://image.tmdb.org/t/p/w500/${cardData.poster_path}`}
           alt="poster"
           className="rounded-tl rounded-bl md:rounded-t md:rounded-bl-none w-full h-full"
-        />
+        />:<div className="w-full h-full bg-gray-400 rounded-t"></div>}
       </div>
 
       <div className="grow p-4 md:flex-none md:h-28">
